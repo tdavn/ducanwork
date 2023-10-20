@@ -1,0 +1,59 @@
+{% extends "voca/base_voca.html" %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+
+<h2>Words or Phrases to Review</h2>
+{% for word in word_2_review %}
+    <li><a href="{{word.get_absolute_url}}">{{word.word_entry}}</a></li>
+{% endfor %}
+<h2>Today's word</h2>
+{{today_word.word_entry}}
+<h2>Display word entry</h2>
+{% for word in words %}
+<li>{{ word.word_entry }}</li>
+{% endfor %}
+<h2>Display word definiton</h2>
+{% for word in words %}
+<li>{{ word.word_def }}</li>
+{% endfor %}
+<h2>Display image for illustration</h2>
+{% for word in words %}
+<img src="{{ word.illustration.url }}" alt="illustration">
+<br>
+{{ word.illustration.url }}
+{% endfor %}
+<h2>Testing section</h2>
+{% for word in words %}
+    {{word.created.date}}
+    {{word.created.day}}
+{% endfor %}
+<h2>3 days</h2>
+{{three_day}}
+{% for word in three_day %}
+    <p>{{word}}</p>
+    <p>{{word.word_def}}</p>
+   <img src="{{ word.illustration.url }}" alt="illustration"> 
+{% endfor %}
+
+
+<h2>a week</h2>
+{{a_week}}
+{% for day in a_week %}
+    <p>{{day}}</p>
+    
+{% endfor %}
+<h2>two weeks</h2>
+{{two_week}}
+{% for day in two_week %}
+    <p>{{day}}</p>
+    
+{% endfor %}
+<h2>a month</h2>
+{{a_month}}
+{% for day in a_month %}
+    <p>{{day}}</p>
+    
+{% endfor %}
+<br>
+<br>
+{% endblock %}

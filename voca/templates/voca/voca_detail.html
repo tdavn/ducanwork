@@ -1,0 +1,23 @@
+{% extends "voca/base_voca.html" %}
+{% block title %}{{ voca.word_entry }}{% endblock %}
+{% block content %}
+
+<h1>Word Details</h1>
+{% if voca.illustration %}
+            <img src="{{ voca.illustration.url }}">
+{% endif %}
+
+  <h1>{{ voca.word_entry }}</h1>
+  <a href="{% url 'voca:edit_word' voca.pk %}">(Edit)</a>
+  <p class="date">
+    Added on {{ voca.created }} by {{ voca.author }}. Last update on {{ voca.upadated }}
+  </p>
+  <h2>Definition</h2>
+  <p>{{ voca.word_def|linebreaks }}</p>
+  <h2>examples</h2>
+  {{voca.examples}}
+  <h2>Thesaurus</h2>
+  {{voca.thesaurus}}
+<br>
+<br>
+{% endblock %}

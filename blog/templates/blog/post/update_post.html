@@ -1,0 +1,12 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}Update Post{% endblock %}
+{% block content %}
+<form class="s-content__form" method="POST" enctype='multipart/form-data'>
+    <fieldset>
+      {% csrf_token %}  <!-- cross site resquest form token -->
+      {{ form.as_p }}   <!-- every single element in form is wrapped by <p> </p> --->
+    </fieldset>
+    <button class="btn btn--primary">Post</button>
+</form>
+{% endblock %}

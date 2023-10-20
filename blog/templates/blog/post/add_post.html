@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}Adding Post{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+  <form class="s-content__form" method="POST" enctype='multipart/form-data'>
+      <fieldset>
+        {% csrf_token %}  <!-- cross site resquest form token -->
+        {{ form.as_p }}   <!-- every single element in form is wrapped by <p> </p> --->
+      </fieldset>
+      <button class="btn btn--primary">Post</button>
+  </form>
+{% else %}
+  <h1>Wrong way ...</h1>
+  <p>you need to <a href="{% url 'login' %}" title="">Login</a> to enter.</p>
+{% endif %}
+{% endblock %}
