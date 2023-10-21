@@ -37,10 +37,7 @@ def post_list(request, tag_slug=None):
 def post_detail(request, year, month, day, post):
     '''display a single post'''
     post = get_object_or_404(Post, slug=post,
-                                   status='published',
-                                   publish__year=year,
-                                   publish__month=month,
-                                   publish__day=day)
+                                   status='published')
     # List of active comments for this post
     comments = post.comments.filter(active=True)
     new_comment = None
